@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+
+    <properties resource="jdbc.properties"/>
+
+    <typeAliases>
+        <package name="com.yumubi.mybatis.pojo"></package>
+    </typeAliases>
+
+    <!--
+        配置链接数据库的环境
+        default : 选择那个环境有效
+     -->
+    <environments default="development">
+
+        <environment id="development">
+
+            <!-- 事务管理器 -->
+            <transactionManager type="JDBC"></transactionManager>
+
+            <!-- 数据源 即连接池-->
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 引入 MyBatis 的映射文件 : 存放SQL语句 和 POJO的映射方式 -->
+    <mappers>
+        <!--        <mapper resource="com.yumubi.mybatis.mapper"></mapper>-->
+        <package name="com.yumubi.mybatis.mapper"/>
+    </mappers>
+</configuration>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="studentOne" class="com.turning.spring.pojo.Student">
+        <property name="sid" value="1001"></property>
+<!--        <property name="sname" value="张山"></property>-->
+        <property name="sname">
+            <value><![CDATA[
+                <<老王>>>>
+            ]]></value>
+        </property>
+        <property name="age" value="23"></property>
+        <property name="gender">
+            <null/>
+        </property>
+
+<!--        <constructor-arg value="1002"></constructor-arg>-->
+<!--        <constructor-arg value="赵"></constructor-arg>-->
+<!--        <constructor-arg value="男"></constructor-arg>-->
+<!--        <constructor-arg value="24" name="socre"></constructor-arg>-->
+    </bean>
+
+    <bean id="studentFive" class="com.turning.spring.pojo.Student">
+        <property name="sid" value="1003"></property>
+        <property name="sname" value="赵六"></property>
+        <property name="gender" value="男"></property>
+        <property name="age" value="26"></property>
+<!--        <property name="clazz" ref="clazzOne"></property>-->
+<!--        <property name="clazz.cid" value="3333"></property>-->
+<!--        <property name="clazz.cname" value="呵呵呵呵呵啊啊啊"></property>-->
+        <property name="clazz">
+            <bean id="clazzInner" class="com.turning.spring.pojo.Clazz">
+                <property name="cid" value="32233323"></property>
+                <property name="cname" value="按吧按吧按吧"></property>
+            </bean>
+        </property>
+        
+        
+        <property name="hobby">
+            <array>
+                <value>抽烟</value>
+                <value>喝酒</value>
+                <value>烫头</value>
+            </array>
+        </property>
+
+<!--        <property name="teacherMap">-->
+<!--            <map>-->
+<!--                <entry key="10085" value-ref="teacherOne"></entry>-->
+<!--                <entry key="10086" value-ref="teacherTwo"></entry>-->
+<!--            </map>-->
+<!--        </property>-->
+        <property name="teacherMap" ref="teacherMap"></property>
+    </bean>
+
+    <bean id="teacherOne" class="com.turning.spring.pojo.Teacher">
+        <property name="tid" value="10085"></property>
+        <property name="tname" value="大宝"></property>
+    </bean>
+
+    <bean id="teacherTwo" class="com.turning.spring.pojo.Teacher">
+        <property name="tid" value="10086"></property>
+        <property name="tname" value="道尔"></property>
+    </bean>
+
+    <bean id="studentSix" class="com.turning.spring.pojo.Student"
+        p:sid="66666" p:sname="盒子" p:teacherMap-ref="teacherMap"></bean>
+
+    <bean id="clazzOne" class="com.turning.spring.pojo.Clazz">
+        <property name="cid" value="1111"></property>
+        <property name="cname" value="呵呵呵"></property>
+<!--        <property name="students">-->
+<!--            <list>-->
+<!--                <ref bean="studentFive"></ref>-->
+<!--                <ref bean="studentOne"></ref>-->
+<!--            </list>-->
+<!--        </property>-->
+        <property name="students" ref="studentList"></property>
+    </bean>
+    <util:list id="studentList">
+        <ref bean="studentFive"></ref>
+        <ref bean="studentOne"></ref>
+    </util:list>
+
+    <util:map id="teacherMap">
+        <entry key="10085" value-ref="teacherOne"></entry>
+        <entry key="10086" value-ref="teacherOne"></entry>
+    </util:map>
+<!--    <bean id="studentTwo" class="com.turning.spring.pojo.Student"></bean>-->
+</beans>

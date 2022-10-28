@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+        <context:component-scan base-package="com.turning.spring"></context:component-scan>
+<!--        <context:component-scan base-package="com.turning.spring" use-default-filters="false">-->
+<!--&lt;!&ndash;                <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>&ndash;&gt;-->
+<!--&lt;!&ndash;                <context:exclude-filter type="assignable" expression="controller.com.turning.spring.proxy.UserController"/>&ndash;&gt;-->
+<!--                <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+<!--        </context:component-scan>-->
+
+
+<!--        <bean id="userServiceImpl" class="Impl.service.com.turning.spring.proxy.UserServiceImpl"></bean>-->
+<!--        <bean id="userDaoI" class="impl.dao.com.turning.spring.proxy.UserDaoImpl"></bean>-->
+
+</beans>
